@@ -66,18 +66,18 @@ class display extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          cost[index],
+                          status[index],
                           style: const TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             color: Colors.orange,
                           ),
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          status[index],
+                          cost[index],
                           style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
+                            fontSize: 14,
+                            color: Colors.black,
                           ),
                         ),
                       ],
