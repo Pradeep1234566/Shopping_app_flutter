@@ -203,12 +203,20 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildCategoryButtons() {
     return SizedBox(
-      height: 50,
+      height: 70,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          IconButton(
-            icon: const Icon(Icons.snowshoeing),
+          _buildCategoryButton(
+            icon: Icons.snowshoeing,
+            label: 'Shoes',
+            isSelected: currentDisplay ==
+                display(
+                  Name: Name,
+                  Shoe: Shoe,
+                  cost: cost,
+                  status: status,
+                ),
             onPressed: () {
               setState(() {
                 currentDisplay = display(
@@ -219,11 +227,18 @@ class _HomePageState extends State<HomePage> {
                 );
               });
             },
-            tooltip: 'Shoes',
           ),
           const SizedBox(width: 20),
-          IconButton(
-            icon: const Icon(Icons.watch),
+          _buildCategoryButton(
+            icon: Icons.watch,
+            label: 'Watches',
+            isSelected: currentDisplay ==
+                display(
+                  Name: Watch,
+                  Shoe: watch_name,
+                  cost: cost,
+                  status: status,
+                ),
             onPressed: () {
               setState(() {
                 currentDisplay = display(
@@ -234,11 +249,18 @@ class _HomePageState extends State<HomePage> {
                 );
               });
             },
-            tooltip: 'Watches',
           ),
           const SizedBox(width: 20),
-          IconButton(
-            icon: const Icon(Icons.dry_cleaning),
+          _buildCategoryButton(
+            icon: Icons.dry_cleaning,
+            label: 'Jackets',
+            isSelected: currentDisplay ==
+                display(
+                  Name: Name,
+                  Shoe: Shoe,
+                  cost: cost,
+                  status: status,
+                ),
             onPressed: () {
               setState(() {
                 currentDisplay = display(
@@ -249,10 +271,46 @@ class _HomePageState extends State<HomePage> {
                 );
               });
             },
-            tooltip: 'Jackets',
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildCategoryButton({
+    required IconData icon,
+    required String label,
+    required bool isSelected,
+    required VoidCallback onPressed,
+  }) {
+    return Column(
+      mainAxisAlignment:
+          MainAxisAlignment.center, // Align both the icon and text vertically
+      crossAxisAlignment: CrossAxisAlignment.center, // Align them horizontally
+      children: [
+        GestureDetector(
+          onTap: onPressed,
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: isSelected ? Colors.orange : Colors.transparent,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              icon,
+              color: isSelected ? Colors.white : Colors.grey,
+            ),
+          ),
+        ),
+        const SizedBox(height: 5),
+        Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? Colors.orange : Colors.grey,
+            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+          ),
+        ),
+      ],
     );
   }
 }
