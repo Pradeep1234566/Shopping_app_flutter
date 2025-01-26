@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:shopping/pages/favourites_page.dart';
 import 'package:shopping/pages/search_page.dart';
 import 'package:shopping/pages/shopping_page.dart';
+import 'package:shopping/widgets/W1.dart';
+import 'package:shopping/widgets/W2.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +20,26 @@ class _HomePageState extends State<HomePage> {
     SearchPage(),
     ShoppingPage(),
     FavouritesPage(),
+  ];
+
+  final List<String> Name = [
+    'assest/Images/S1.jpg',
+    'assest/Images/S2.jpg',
+  ];
+
+  final List<String> Shoe = [
+    'Nike Air Max 200',
+    'Nike Air Max 97',
+  ];
+
+  final List<String> cost = [
+    '\$120',
+    '\$160',
+  ];
+
+  final List<String> status = [
+    'Available',
+    'Out of Stock',
   ];
 
   void _onItemTapped(int index) {
@@ -186,14 +208,28 @@ class _HomePageState extends State<HomePage> {
                       const Icon(Icons.tune, color: Colors.grey),
                     ],
                   ),
-                  Row(
-                    children: [
-                      
-                    ],
-                  )
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: 50,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        CategoryItem(icon: Icons.snowshoeing, text: 'Shoes'),
+                        const SizedBox(width: 20),
+                        CategoryItem(icon: Icons.watch, text: 'Watches'),
+                        const SizedBox(width: 20),
+                        CategoryItem(icon: Icons.dry_cleaning, text: 'Jackets'),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  display(
+                      Name: Name,
+                      Shoe: Shoe,
+                      cost: cost,
+                      status: status // Add appropriate statuses
+                      ),
                 ],
-
-
               ),
             ),
           ],
