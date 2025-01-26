@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shopping/pages/favourites_page.dart';
+import 'package:shopping/pages/search_page.dart';
+import 'package:shopping/pages/shopping_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +12,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    HomePage(), // Assuming this is the homepage itself
+    SearchPage(),
+    ShoppingPage(),
+    FavouritesPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      if (index != _selectedIndex) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => _pages[index]),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +47,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: BottomNavigationBar(
             currentIndex: _selectedIndex,
-            onTap: (index) {
-              setState(() {
-                _selectedIndex = index;
-              });
-            },
+            onTap: _onItemTapped,
             type: BottomNavigationBarType.fixed,
             backgroundColor: Colors.white,
             selectedItemColor: Colors.white,
@@ -169,7 +186,14 @@ class _HomePageState extends State<HomePage> {
                       const Icon(Icons.tune, color: Colors.grey),
                     ],
                   ),
+                  Row(
+                    children: [
+                      
+                    ],
+                  )
                 ],
+
+
               ),
             ),
           ],
